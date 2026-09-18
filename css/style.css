@@ -1,0 +1,392 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #222;
+    transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.container > p {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+section {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+.adicionar-pessoa {
+    display: flex;
+    gap: 10px;
+}
+
+input,
+select,
+button {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+input {
+    flex: 1;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background-color: #333;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+#listaPessoas {
+    margin-top: 20px;
+}
+
+.pessoa {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: #f5f5f5;
+    border-radius: 6px;
+}
+
+.btn-remover {
+    background-color: #c62828;
+    padding: 6px 10px;
+}
+
+.configuracao {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.restricao {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.restricao select {
+    min-width: 150px;
+}
+
+#listaRestricoes {
+    margin-top: 15px;
+}
+
+.item-restricao {
+    background-color: #fff3f3;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+}
+
+.btn-embaralhar {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    background-color: #1976d2;
+    margin-bottom: 25px;
+}
+
+.resultado {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.equipe {
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
+
+.equipe h3 {
+    margin-bottom: 10px;
+}
+
+.equipe ul {
+    list-style: none;
+}
+
+.equipe li {
+    padding: 6px 0;
+    border-bottom: 1px solid #ddd;
+}
+#contadorPessoas {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    background-color: #fff3cd;
+    color: #856404;
+    font-weight: bold;
+}
+
+#contadorPessoas.quase-completo {
+    background-color: #d9f2d9;
+    color: #2e6b2e;
+}
+
+#contadorPessoas.completo {
+    background-color: #198754;
+    color: white;
+}
+
+#contadorPessoas.excedente {
+    background-color: #dc3545;
+    color: white;
+}
+.barra-pessoas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.barra-pessoas #contadorPessoas {
+    margin-bottom: 0;
+}
+
+.btn-excluir-tudo {
+    background-color: #dc3545;
+}
+
+.btn-excluir-tudo:hover {
+    background-color: #bb2d3b;
+}
+/* ==============================
+   MODAL DE CONFIRMAÇÃO
+   ============================== */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1000;
+}
+
+.modal.ativo {
+    display: flex;
+}
+
+.modal-conteudo {
+    width: 90%;
+    max-width: 400px;
+
+    background-color: white;
+    padding: 25px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-conteudo h2 {
+    margin-bottom: 15px;
+}
+
+.modal-conteudo p {
+    margin-bottom: 20px;
+}
+
+.nao-perguntar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.nao-perguntar input {
+    cursor: pointer;
+    margin: 0;
+}
+
+.botoes-modal {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+#btnCancelarRemocao {
+    background-color: #6c757d;
+}
+
+#btnConfirmarRemocao {
+    background-color: #dc3545;
+}
+.dados-pessoa {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.caracteristicas {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.caracteristicas select {
+    min-width: 160px;
+}
+.titulo-turma {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-bottom: 5px;
+}
+#btnExportarExcel {
+    background-color: #2E8B57;
+}
+.btn-tema {
+    line-height: 1;
+    /**padding-right: 0.1px;**/
+
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: #333;
+    color: white;
+
+    font-size: 20px;
+    cursor: pointer;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+
+    transition: 0.3s;
+}
+
+.btn-tema:hover {
+    transform: scale(1.1);
+}
+body.modo-escuro {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+body.modo-escuro section {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+}
+
+body.modo-escuro input,
+body.modo-escuro select {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border-color: #555;
+}
+
+body.modo-escuro .pessoa,
+body.modo-escuro .restricao {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body.modo-escuro .equipe {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+body,
+body section,
+body input,
+body select,
+body textarea,
+body button,
+body .pessoa,
+body .restricao,
+body .equipe {
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+body.modo-escuro .item-restricao {
+    background-color: #2a2a2a;
+    color: #ffffff;
+}
+body .item-restricao {
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+#descricaoTurma {
+    display: block;
+    margin-top: 10px;
+}
+.rodape {
+    margin: 30px 15px 20px;
+    font-size: 12px;
+    color: #000000;
+}
+
+.rodape strong {
+    font-size: 13px;
+}
+
+.rodape p {
+    margin: 4px 0;
+}
+
+body.modo-escuro .rodape {
+    color: #aaa;
+}

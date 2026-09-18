@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Embaralhador de Equipes</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<button id="btnTema" class="btn-tema">🌙</button>
+
+<body>
+
+    <main class="container">
+
+        <h1>🎲 Embaralhador de Equipes</h1>
+
+        <p>
+            Adicione as pessoas, escolha a quantidade de equipes
+            e deixe o sistema fazer o sorteio.
+        </p>
+
+        <section class="arquivo">
+            <h2>🏫 Identificação da turma</h2>
+
+            <input type="text" id="nomeTurma" placeholder="Digite o nome da turma">
+            <input type="text" id="descricaoTurma" placeholder="Descrição da turma (opcional)">
+        </section>
+        
+        <section class="cadastro">
+
+            <h2>👥 Pessoas</h2>
+
+            <div class="barra-pessoas">
+
+                <div id="contadorPessoas">
+                    Pessoas: <strong>0</strong>/36
+                </div>
+
+                <button id="btnExcluirTudo" class="btn-excluir-tudo">
+                    🗑️ Excluir tudo
+                </button>
+
+            </div>
+
+            <div class="adicionar-pessoa">
+                <input
+                    type="text"
+                    id="nomePessoa"
+                    placeholder="Digite o nome da pessoa"
+                >
+
+                <button id="btnAdicionar">
+                    + Adicionar
+                </button>
+            </div>
+
+            <div id="listaPessoas">
+                <!-- As pessoas aparecerão aqui -->
+            </div>
+
+        </section>
+
+
+        <section class="configuracao">
+
+            <h2>⚙️ Configuração</h2>
+
+            <label for="quantidadeEquipes">
+                Quantidade de equipes:
+            </label>
+
+            <select id="quantidadeEquipes">
+                <option value="6">6 equipes</option>
+                <option value="7">7 equipes</option>
+            </select>
+
+        </section>
+
+        <section class="arquivos">
+            <h2>💾 Arquivos</h2>
+
+            <div class="botoes-arquivo">
+                <button id="btnExportarEquip">💾 Exportar lista</button>
+
+                <button id="btnImportarEquip">📂 Importar lista</button>
+                
+                <button id="btnExportarExcel">📊 Exportar em Excel</button>
+
+                <input type="file" id="inputImportarEquip" accept=".eqps" hidden>
+            </div>
+        </section>
+
+        <section class="restricoes">
+
+            <h2>🚫 Restrições</h2>
+
+            <p>
+                Escolha duas pessoas que não podem ficar na mesma equipe.
+            </p>
+
+            <div class="restricao">
+
+                <select id="pessoa1">
+                    <option value="">Pessoa 1</option>
+                </select>
+
+                <span>❌</span>
+
+                <select id="pessoa2">
+                    <option value="">Pessoa 2</option>
+                </select>
+
+                <button id="btnAdicionarRestricao">
+                    Adicionar restrição
+                </button>
+
+            </div>
+
+            <div id="listaRestricoes">
+                <!-- As restrições aparecerão aqui -->
+            </div>
+
+        </section>
+
+
+        <button id="btnEmbaralhar" class="btn-embaralhar">
+            🎲 Embaralhar equipes
+        </button>
+
+
+        <section id="resultado" class="resultado">
+            <!-- As equipes aparecerão aqui -->
+        </section>
+
+    </main>
+    <!-- Modal de confirmação -->
+    <div id="modalConfirmacao" class="modal">
+
+        <div class="modal-conteudo">
+
+            <h2>⚠️ Confirmar remoção</h2>
+
+            <p id="mensagemConfirmacao">
+                Tem certeza que deseja remover esta pessoa?
+            </p>
+
+            <label class="nao-perguntar">
+                <input type="checkbox" id="naoPerguntar">
+                Não perguntar novamente
+            </label>
+
+            <div class="botoes-modal">
+
+                <button id="btnCancelarRemocao">
+                    Cancelar
+                </button>
+
+                <button id="btnConfirmarRemocao">
+                    Remover
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.bundle.js"></script>
+    <script src="js/script.js"></script>
+
+    <footer class="rodape">
+        <strong>Entre em contato:</strong>
+        <p>Gustavo Mendes Correa</p>
+        <p>📧 gustavo.mendes.correa5730@gmail.com</p>
+        <p>📱 +55 (47) 99105-5730</p>
+        <p>© 2026 — Embaralhador de Equipes v.3</p>
+    </footer>
+
+</body>
+</html>
